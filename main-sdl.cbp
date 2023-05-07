@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="main-sdl" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/main-sdl" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lmingw32" />
+					<Add option="-lSDL2main" />
+					<Add option="-lSDL2" />
+					<Add option="-lSDL2_image" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/main-sdl" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="sdl/sdl_pastas/SDL2-devel-2.26.1-mingw/SDL2-2.26.1/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="sdl/sdl_image/SDL2_image-devel-2.6.3-mingw/SDL2_image-2.6.3/x86_64-w64-mingw32/include/SDL2" />
+			<Add directory="sdl/sdl_mixer/SDL2_mixer-devel-2.6.3-mingw/SDL2_mixer-2.6.3/x86_64-w64-mingw32/include/SDL2" />
+		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="SDL2main" />
+			<Add library="SDL2.dll" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add directory="sdl/sdl_pastas/SDL2-devel-2.26.1-mingw/SDL2-2.26.1/x86_64-w64-mingw32/lib" />
+			<Add directory="sdl/sdl_image/SDL2_image-devel-2.6.3-mingw/SDL2_image-2.6.3/x86_64-w64-mingw32/lib" />
+			<Add directory="sdl/sdl_mixer/SDL2_mixer-devel-2.6.3-mingw/SDL2_mixer-2.6.3/x86_64-w64-mingw32/lib" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
+		</ExtraCommands>
+		<Unit filename="include/Animation.h" />
+		<Unit filename="include/ControleAnimation.h" />
+		<Unit filename="include/Engine.h" />
+		<Unit filename="include/Input.h" />
+		<Unit filename="include/Rigidbody2D.h" />
+		<Unit filename="include/Vec2.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Animation.cpp" />
+		<Unit filename="src/ControleAnimation.cpp" />
+		<Unit filename="src/Engine.cpp" />
+		<Unit filename="src/Input.cpp" />
+		<Unit filename="src/Rigidbody2D.cpp" />
+		<Unit filename="src/Vec2.cpp" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
