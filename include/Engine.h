@@ -39,7 +39,7 @@ public:
     void SetSave(std::string name,std::string value);
     std::string GetSave(std::string name);
     void Clean();
-    void EventQuit();
+
 private:
     SDL_Window* window = NULL;
     SDL_Renderer* screen = NULL;

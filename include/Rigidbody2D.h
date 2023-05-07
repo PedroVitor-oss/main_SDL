@@ -20,6 +20,8 @@ public:
 
     void SetGravity(float newGravity);
 
+    void SetVelocity(Vec2 v);
+
     void resetParams(SDL_Rect rect,float mass);
 
     void collide(const SDL_Rect& other_rect);

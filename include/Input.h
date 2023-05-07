@@ -113,6 +113,7 @@ class InputControle
 		void KeyEvent();
 		bool MousePressed(int m);
 		Vec2 GetPositionMouse();
+		bool GetExit();
 	protected:
 
 	private:
@@ -124,6 +125,7 @@ class InputControle
 		int newKeyUp = 0;
 		void AddKey(int newKey);
 		void RemoveKey(int Key);
+		bool EventQuit = false;
 };
 
 #endif // INPUT_H
