@@ -17,20 +17,22 @@ void InputControle::AddKey(int newKey)
 		}
 	}
 }
-
+bool InputControle::GetExit(){
+	return EventQuit;
+}
 void InputControle::KeyEvent()
 {
 	btn_mouse[0] = false;
 	btn_mouse[1] = false;
 	btn_mouse[2] = false;
+	EventQuit = false;
 	newKeyDown =0;
 	newKeyUp = 0;
 	SDL_Event event;
 	while(SDL_PollEvent(&event)){
 		switch(event.type){
 			case SDL_QUIT:
-				SDL_Quit();
-				IMG_Quit();
+				EventQuit = true;
 			break;
 			case SDL_KEYDOWN:
 				newKeyDown = event.key.keysym.sym;

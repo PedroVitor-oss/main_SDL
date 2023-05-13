@@ -4,6 +4,7 @@
 
 #include <SDL.h>
 #include <Vec2.h>
+#include <Engine.h>
 class Rigidbody2D {
 public:
     Rigidbody2D(SDL_Rect rect, float mass);
@@ -15,16 +16,18 @@ public:
     void update(float dt);
 
     bool checkCollision(Rigidbody2D& other);
+    bool checkCollision(Rigidbody2D others[],int length);
 
     SDL_Rect& GetBox();
 
     void SetGravity(float newGravity);
 
     void SetVelocity(Vec2 v);
+    void SetRect(SDL_Rect rect);
 
     void resetParams(SDL_Rect rect,float mass);
 
-    void collide(const SDL_Rect& other_rect);
+    void collide(Rigidbody2D other);
 private:
 	float m_gravity = 10;
     SDL_Rect m_rect; // position and size

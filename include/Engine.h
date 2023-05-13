@@ -8,6 +8,8 @@
 #include <fstream>
 #include <Input.h>
 
+
+
 struct RGBColor{
 
     int r = 0;

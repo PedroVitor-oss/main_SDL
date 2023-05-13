@@ -7,27 +7,32 @@
 			<Cursor1 position="426" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\ControleAnimation.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Rigidbody2D.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="222" topLine="1" />
+			<Cursor1 position="89" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="src\Input.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Engine.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2377" topLine="99" />
+			<Cursor1 position="992" topLine="27" />
 		</Cursor>
 	</File>
 	<File name="src\Engine.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="83" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1240" topLine="21" />
+			<Cursor1 position="884" topLine="6" />
 		</Cursor>
 		<Folding>
-			<Collapse line="15" />
+			<Collapse line="9" />
+			<Collapse line="33" />
+			<Collapse line="38" />
+			<Collapse line="42" />
+			<Collapse line="48" />
+			<Collapse line="73" />
+			<Collapse line="80" />
+			<Collapse line="86" />
+			<Collapse line="95" />
+			<Collapse line="102" />
+			<Collapse line="125" />
 		</Folding>
 	</File>
 	<File name="include\Animation.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -40,9 +45,9 @@
 			<Cursor1 position="98" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Rigidbody2D.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\Rigidbody2D.h" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="200" topLine="7" />
+			<Cursor1 position="374" topLine="7" />
 		</Cursor>
 	</File>
 	<File name="src\ControleAnimation.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -50,14 +55,37 @@
 			<Cursor1 position="62" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="include\Input.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="include\ControleAnimation.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2983" topLine="104" />
+			<Cursor1 position="222" topLine="1" />
 		</Cursor>
 	</File>
-	<File name="src\Rigidbody2D.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="src\Input.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="126" topLine="0" />
+			<Cursor1 position="2125" topLine="0" />
 		</Cursor>
+		<Folding>
+			<Collapse line="3" />
+			<Collapse line="23" />
+			<Collapse line="72" />
+			<Collapse line="76" />
+			<Collapse line="80" />
+			<Collapse line="89" />
+			<Collapse line="98" />
+			<Collapse line="110" />
+		</Folding>
+	</File>
+	<File name="include\Input.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2808" topLine="97" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1273" topLine="24" />
+		</Cursor>
+		<Folding>
+			<Collapse line="15" />
+		</Folding>
 	</File>
 </CodeBlocks_layout_file>

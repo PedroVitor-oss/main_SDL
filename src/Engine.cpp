@@ -23,15 +23,12 @@ void Engine::Init(std::string title, int widthWindow, int heightWindow ){
 	}
 
 };
-/** @brief (one liner)
-  *
-  * (documentation goes here)
-  */
 void Engine::Update(int FPS){
-	//Clean();
 	SDL_RenderPresent(screen);
-	//EventQuit();
 	Input.KeyEvent();
+	if (Input.GetExit()){
+		Quit();
+	}
 	Sleep(FPS);
 }
 void Engine::Clean(){
@@ -42,20 +39,6 @@ void Engine::Clean(){
 void Engine::SetColorScreen(RGBColor color){
 	ColorScreen = color;
 };
-void Engine::EventQuit()
-{
-
-	SDL_Event event;
-	while(SDL_PollEvent(&event)){
-		switch(event.type){
-			case SDL_QUIT:
-				Engine::Quit();
-
-			break;
-
-		}
-	}
-}
 
 void Engine::DrawRect(SDL_Rect box, RGBColor cor){
 
@@ -99,6 +82,7 @@ void Engine::Quit(){
 		SDL_Quit();
 		IMG_Quit();
 };
+
 bool Engine::ColisionRect(SDL_Rect box1, SDL_Rect box2)
 {
 	if(box1.x+box1.w>box2.x&&box1.x<box2.x+box2.w&&

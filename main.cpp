@@ -23,24 +23,38 @@ int main( int argc, char * argv[] )
     controleMoney.AddAnimation({AnimationMoneyRotation,money});
     controleMoney.AddAnimation({AnimationMoneyIdle,money});
 
+    //constantes
+    float speed = 10.0;
+    float forceJump = 150.0;
 
     //create conponets of fisic
     Rigidbody2D myBox({100,100,100,100},1);
-    //
     Rigidbody2D ground({0,600,1200,100},30);
+    Rigidbody2D otherBox({400,500,100,100},1);
+    Rigidbody2D teto({0,0,1200,100},1);
     while(1){
         Game.Clean();
         myBox.update(0.5);
-        if(myBox.checkCollision(ground)){
-            std::cout<<"colision";
-            myBox.SetGravity(-10);
+        Rigidbody2D coliders[3] = {ground,otherBox,teto};
+        myBox.checkCollision(coliders,3);
+
+        if(Game.Input.KeyDown(SDLK_SPACE) && myBox.GetVelocity().y == 0){
+            myBox.applyForce({0,-forceJump});
         }
-        if(Game.Input.KeyDown(SDLK_SPACE)){
-            //controleMoney.SetNubAnimation(controleMoney.GetNubAnimation()==0?1:0);
-            myBox.applyForce({20,-100});
+        if(Game.Input.KeyIsPressed(SDLK_LEFT)){
+            SDL_Rect movement = myBox.GetBox();
+            movement.x-=speed;
+            myBox.SetRect(movement);
         }
+        if(Game.Input.KeyIsPressed(SDLK_RIGHT)){
+            SDL_Rect movement = myBox.GetBox();
+            movement.x+=speed;
+            myBox.SetRect(movement);
+        }
+        Game.DrawRect(otherBox.GetBox(),{100,100,100});
         Game.DrawTexture(controleMoney.GetTexture(),controleMoney.GetSpriteGame(),myBox.GetBox());
         Game.DrawRect(ground.GetBox(),{100,100,100});
+        Game.DrawRect(teto.GetBox(),{100,100,100});
         Game.Update(41);
     }
     return 0;
