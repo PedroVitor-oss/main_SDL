@@ -147,12 +147,115 @@ Essa função retorna verdadeiro, emquando a tecla esta precionada.
   Game.Input.KeyIsPressed(keyvalue);
 ```
 ## MousePressed
-Essa função retorna quando um botão do mouse foi precionada.
+Essa função retorna ( **true** ou **false** ) se  um botão do mouse foi precionada.
 ```
-  GAme.Input.MousePressed(controleMouse);
+  Game.Input.MousePressed(controleMouse);
 ```
 No local do controleMouse temos que colocar um Game.MouseButton com as seguintes variaveis:
-- center
+- Center
 - Left
 - Right
+```
+  Game.Input.MousePressed(Game.MouseButton.Left)
+```
+## GetPositionMouse
+Essa função retorna em forma  de  vetor a posição do mouse na janela. ( terá uma esplicação melhor da biblioteca Vec2 embreve)<br>
+```
+  Vec2 positionMouse = Game.Input.GetPositionMouse();
+  positionMouse.x;//posição x
+  positionMouse.y;//posição y
+```
 
+## GetExit
+Essa é uma função que permite verificar quando é precionado o botão de fechar a janela.<br>
+Costumo colocar como parametro do loop.
+```
+int main( int argc, char * argv[] )
+{
+  while(!Game.Input.GetExit())
+  {
+  //code game
+  }
+  //apos fechar a janela
+  return 0;
+}
+```
+# Vec2.h
+Essa biblioteca possui uma class bem simples ela posui apenas doias variaveis float , **x** e **y**.<br>
+Ela futuramente utilizara de opradores como **+**,**-**,***** e **/**.
+
+# Rigidbody2D.h
+Essa função é responsavel por aplicar fisica aos SDL_Rect, como graficade, lançamento e colisão.<br>
+## Iniciação 
+Para iniciat uma corpo fisico usamos a seguinte codigo.
+```
+ Rigidbody2D myBox(SDL_Rect, massa);
+```
+O SDL_Rect pode ser colocado um ja definido que utilizamos para anterior mente para desenhar na tela ou um novo com ```{100,100,100,100}```. A massa é um intero que serve para funções futuras.
+## Update
+Essa função faz os calculos da de fisica, ele recebe apenas uma parametro float o deltaTime, o deltaTime controla o tempo de atualização, quanto maior o valor mais rapido ( lembrando que o valor não pode ser  0 pois isso faz com que não aja valvulo nem um).
+```
+  myBox.update(0.5);
+```
+## SetGravity
+Essa função ser para dizer qual gravidade deve ser aplicado no corpo, por padrão ela esta como dez mas ela pode ser alterada. O parametro que ela recebe é um float.
+```
+myBox.SetGravity(9.8);
+```
+## applyForce
+Essa função serve como um "empurão", ele adiciona uma aceleração inicial que vaz com que o corpo se locaomova ate que a velocidade chegue a zero. Ele recebe como parametro um Vec2 onde o parametro x seria a força x e y a força y,  que pode ser substituido por ```{fx,fy}```.( No momento não há desaceleração por atrito e elasticidade ).
+```
+  myBox.applyForce({0,-100});
+```
+Por nossa gravidade ser positiva para que nosso corpo suba para sima com efeito de pulo temos que colocar gravidade negativa.
+## checkCollision 
+Essa função tem duas possibilidade de usar ela apenas com um outro corpo fisico e com uma lista. Quando é apenas uma corpo fisica ela retorna se ouve uma colisão com o objeto do parametro. Exemplo:
+```
+   Rigidbody2D ground({0,600,1200,100},30);
+   myBox.checkCollision(ground);
+```
+Nesse caso a função retornara quano myBox colidir com o ground ( o chão ).<br>
+No caso da lista podemos fazer da seguinte forma:
+```
+Rigidbody2D ground({0,600,1200,100},30);
+Rigidbody2D wall({400,300,100,300},1);
+
+Rigidbody2D listColiders[2] = {ground, wall};
+
+myBox.checkCollision(listColiders, 2);
+```
+Nesse caso ela ira retornar **true** mesmo que não esteja colidindo com nada, pois ela esta calculando o comportamento fisico que o my.box teria com esse corpos.
+
+## GetBox
+Essa função retorna um SDL_Rect, ou seja, caso quereia desenhar um retangulo com as posições  fisicas do corpo essa função é apição mais adequada.
+```
+  myBox.GetBox();
+```
+## GetVelocity
+Essa função retorna um Vec2 sendo x a velçocidade x e y a velocidade y.
+```
+  myBox.GetVelocity();
+```
+# Animation.h
+Essa classe possui funções referente a SpriteGame uma estrutura da biblioteca Engine.h, comentada na função DrawTexture.
+## AddSprite
+Essa função adiciona um sprite a um array de sprites que sera acessado, lembrando que a ordem que o addSprite é colocado é aordem que ira aparecer na animação.
+```
+  Animation run;
+  run.AddSprite({0,0,30,40});
+  run.AddSprite({30,0,30,40});
+  run.AddSprite({60,0,30,40});
+  run.AddSprite({90,0,30,40});
+```
+## SetTimeUpdate
+Essa função define quando a atualização ira acontecer, no updade da engine, caso tenha colocado o valor 41 para a atualização isso equivale a 1000ms/41 equivale a aprocimadamente 24 frames por segundo(fps) quando definimos que a atualização deve ocorer em 5 em 5 frames de animação (24fps/5) temos aproximadamente 4 sprites por segundo  passando na tela. Por padrão o tempo de atualização é  10 .
+```
+run.SetTimeUpdate(5);
+```
+## GetSprite
+Essa função retorna o sprite game que dever ser mostrado na tela, seguindo as regras das outras funções.
+```
+   Game.DrawTexture(CharaterTexture,run.GetSprite(),myBox);
+```
+# ControleAnimation.h
+Essa classe permite que tenhamos varias animaçãoes 
