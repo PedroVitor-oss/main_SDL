@@ -109,7 +109,7 @@ class InputControle
 		bool KeyIsPressed(  int CodeKey );
 		bool KeyDown(  int CodeKey );
 		bool KeyUp(  int CodeKey);
-		int keyInPressed[10] = {0};
+
 		void KeyEvent();
 		bool MousePressed(int m);
 		Vec2 GetPositionMouse();
@@ -117,6 +117,7 @@ class InputControle
 	protected:
 
 	private:
+	    int keyInPressed[10] = {0};
 	    bool btn_mouse[3] = {false,false,false};
         Vec2 MousePosition = Vec2(0,0);
 		int maxQuantKey = 10;

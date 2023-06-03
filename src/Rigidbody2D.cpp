@@ -66,29 +66,25 @@ void Rigidbody2D::resetParams(SDL_Rect rect,float mass){
 }
 
 void Rigidbody2D::collide(Rigidbody2D other){
-	if( m_rect.x + m_rect.w  >=other.GetBox().x && m_rect.x<= other.GetBox().x + other.GetBox().w){
-		if(m_rect.y<other.GetBox().y){
-			m_rect.y = other.GetBox().y - m_rect.h;
-			m_vy = 0;
-		}
-		if(m_rect.y>other.GetBox().y){
-			m_rect.y = other.GetBox().y + other.GetBox().h;
-			m_vy = 0;
+	SDL_Rect rectOther = other.GetBox();
+	int deltaX = m_rect.x + m_rect.w / 2 - (rectOther.x + rectOther.w / 2);
+    int deltaY = m_rect.y + m_rect.h / 2 - (rectOther.y + rectOther.h / 2);
+    int intersectX = (abs(deltaX) - (m_rect.w + rectOther.w) / 2) / 2;
+    int intersectY = (abs(deltaY) - (m_rect.h + rectOther.h) / 2) / 2;
 
-		}
-
-	}
-	if(m_rect.y >=other.GetBox().y && m_rect.y <= other.GetBox().y + other.GetBox().h){
-		if(m_rect.x>other.GetBox().x&& m_rect.x+m_rect.w > other.GetBox().x + other.GetBox().w){
-			m_rect.x = other.GetBox().x+other.GetBox().w;
-			m_vx =0;
-
-		}
-		if(m_rect.x<other.GetBox().x){
-			m_rect.x = other.GetBox().x-m_rect.w;
-			m_vx =0;
-		}
-	}
+    if (intersectX > intersectY) {
+        if (deltaX > 0) {
+            m_rect.x = rectOther.x + rectOther.w;
+        } else {
+            m_rect.x = rectOther.x - m_rect.w;
+        }
+    } else {
+        if (deltaY > 0) {
+            m_rect.y = rectOther.y + rectOther.h;
+        } else {
+            m_rect.y = rectOther.y - m_rect.h;
+        }
+    }
 }
 void Rigidbody2D::SetRect(SDL_Rect rect){
 	m_rect = rect;

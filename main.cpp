@@ -29,18 +29,18 @@ int main( int argc, char * argv[] )
 
     //create conponets of fisic
     Rigidbody2D myBox({100,100,100,100},1);
+    myBox.SetGravity(1);
     Rigidbody2D ground({0,600,1200,100},30);
-    Rigidbody2D otherBox({400,500,100,100},1);
+    Rigidbody2D otherBox({400,300,100,300},1);
     Rigidbody2D teto({0,0,1200,100},1);
-    while(1){
+    while(Game.Input.GetExit()==false){
         Game.Clean();
-        myBox.update(0.5);
+        myBox.update(-0.5);
         Rigidbody2D coliders[3] = {ground,otherBox,teto};
-        myBox.checkCollision(coliders,3);
-
-        if(Game.Input.KeyDown(SDLK_SPACE) && myBox.GetVelocity().y == 0){
+        if(Game.Input.KeyDown(SDLK_SPACE) && myBox.checkCollision(ground)){
             myBox.applyForce({0,-forceJump});
         }
+        myBox.checkCollision(coliders,3);
         if(Game.Input.KeyIsPressed(SDLK_LEFT)){
             SDL_Rect movement = myBox.GetBox();
             movement.x-=speed;
