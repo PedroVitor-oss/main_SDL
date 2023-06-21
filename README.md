@@ -1,8 +1,5 @@
 # main_SDL
-Esse projeto é uma base para criar projetos em cpp com o editor code::blocks utilizando o renderizador SDL2.<br>
-O projeto por padrão esta com uma images de uma moeda ( sprite animation - imagens com varias imagende movimeto), para demonstrar a utilização de animação.
-Alem de conter a entrada do teclado, mais especificamente a tecla espaço, que faz a moeda se mover.<br>
-Abaixo temos as bibliotecas adicionadas por padrão do preojeto para criação da janela.
+Este projeto é um molde para criar jogos em c++ com o editor codeblocks. Ele utiliza o sdl2, sdl2_image e sdl2_mixer, mesmo que algumas funções dessas bibliotecas não sejam usadas. Esse projeto é de código aberto permitindo a edição e adição de códigos nas bibliotecas principais, isso ajuda a entender mais sobre o sdl2. Por padrão o projeto vai vim com no mínimo um sprite sheet ( imagem com vários sprite) para demonstrar as bibliotecas de animação, entrada do teclado como por exemplo keydown, e um corpo com física para de mostrar funções físicas..
 
 # bibliotecas
 - Engine.h
