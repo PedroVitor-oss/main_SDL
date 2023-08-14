@@ -1,9 +1,8 @@
 # depslib dependency file v1.0
-1684010624 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\main.cpp
+1686021429 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\main.cpp
 	<Engine.h>
-	<Rigidbody2D.h>
-	<Animation.h>
 	<ControleAnimation.h>
+	<Rigidbody2D.h>
 
 1669924718 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\sdl\sdl_pastas\sdl2-devel-2.26.1-mingw\sdl2-2.26.1\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -400,13 +399,14 @@
 1683397747 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\animation.h
 	<Engine.h>
 
-1684000167 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\engine.h
+1686018445 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\engine.h
 	<SDL.h>
 	"SDL_Image.h"
 	"SDL_Mixer.h"
 	<iostream>
 	<fstream>
 	<Input.h>
+	<cmath>
 
 1680134582 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\sdl\sdl_image\sdl2_image-devel-2.6.3-mingw\sdl2_image-2.6.3\x86_64-w64-mingw32\include\sdl2\sdl_image.h
 	"SDL.h"
@@ -438,7 +438,7 @@
 	<Engine.h>
 	<Animation.h>
 
-1683483155 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\engine.cpp
+1686018757 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\engine.cpp
 	"Engine.h"
 	<SDL.h>
 	<SDL_Image.h>
@@ -461,10 +461,10 @@
 	<SDL.h>
 	<Vec2.h>
 
-1684006664 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\rigidbody2d.cpp
+1686021093 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\rigidbody2d.cpp
 	"Rigidbody2D.h"
 
-1684003847 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\rigidbody2d.h
+1686021034 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\rigidbody2d.h
 	<SDL.h>
 	<Vec2.h>
 	<Engine.h>

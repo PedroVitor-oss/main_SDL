@@ -45,32 +45,44 @@ void Engine::DrawRect(SDL_Rect box, RGBColor cor){
 	SDL_SetRenderDrawColor(screen,cor.r,cor.g,cor.b,SDL_ALPHA_OPAQUE);
 	SDL_RenderFillRect(screen,&box);
 };
-
+//render basico
 void Engine::DrawTexture(SDL_Texture* texture, SpriteGame sprite, SDL_Rect boxArea){
+SDL_Rect boxFrameImg;
+	boxFrameImg.h = sprite.h;
+	boxFrameImg.w = sprite.w;
+	boxFrameImg.x = sprite.x;
+	boxFrameImg.y = sprite.y;
 
-if(sprite.w!=0&&boxArea.w == 0){
-		SDL_Rect boxFrameImg;
-		boxFrameImg.h = sprite.h;
-		boxFrameImg.w = sprite.w;
-		boxFrameImg.x = sprite.x;
-		boxFrameImg.y = sprite.y;
-		SDL_RenderCopy(screen, texture,&boxFrameImg,NULL);
-	}else if(sprite.w!=0&&boxArea.w != 0){
-		SDL_Rect boxFrameImg;
-		boxFrameImg.h = sprite.h;
-		boxFrameImg.w = sprite.w;
-		boxFrameImg.x = sprite.x;
-		boxFrameImg.y = sprite.y;
-		SDL_RenderCopy(screen, texture,&boxFrameImg,&boxArea);
-
-	}else if(sprite.w==0&&boxArea.w != 0){
-		SDL_RenderCopy(screen, texture,NULL,&boxArea);
-	}else{
-		SDL_RenderCopy(screen, texture,NULL,NULL);
-
+	if (sprite.w != 0 && boxArea.w != 0) {
+		SDL_RenderCopy(screen, texture, &boxFrameImg, &boxArea);
+	} else if (boxArea.w != 0) {
+		SDL_RenderCopy(screen, texture, nullptr, &boxArea);
+	} else if (sprite.w != 0) {
+		SDL_RenderCopy(screen, texture, &boxFrameImg, nullptr);
+	} else {
+		SDL_RenderCopy(screen, texture, nullptr, nullptr);
 	}
 };
 
+//render com flips
+void Engine::DrawTexture(SDL_Texture* texture, SpriteGame sprite, SDL_Rect boxArea, bool flipX, bool flipY) {
+    SDL_Rect boxFrameImg;
+    boxFrameImg.h = sprite.h;
+    boxFrameImg.w = sprite.w;
+    boxFrameImg.x = sprite.x;
+    boxFrameImg.y = sprite.y;
+
+     SDL_RendererFlip flip = SDL_FLIP_NONE;
+    if (flipX && flipY) {
+        flip = static_cast<SDL_RendererFlip>(flip | SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL);
+    } else if (flipX) {
+        flip = SDL_FLIP_HORIZONTAL;
+    } else if (flipY) {
+        flip = SDL_FLIP_VERTICAL;
+    }
+
+    SDL_RenderCopyEx(screen, texture, &boxFrameImg, &boxArea, 0, nullptr, flip);
+}
 SDL_Texture* Engine::CreateTexture(std::string Path){
 	SDL_Texture* newTexture =NULL;
 	SDL_Surface* newImage = IMG_Load(Path.c_str());
@@ -82,7 +94,10 @@ void Engine::Quit(){
 		SDL_Quit();
 		IMG_Quit();
 };
-
+void Engine::DrawLine(Line l, RGBColor cor){
+	SDL_SetRenderDrawColor(screen,cor.r,cor.g,cor.b,SDL_ALPHA_OPAQUE);
+	SDL_RenderDrawLine(screen, l.startX, l.startY, l.endX, l.endY);
+}
 bool Engine::ColisionRect(SDL_Rect box1, SDL_Rect box2)
 {
 	if(box1.x+box1.w>box2.x&&box1.x<box2.x+box2.w&&
@@ -148,3 +163,46 @@ std::string Engine::GetSave(std::string name)
 	return strReturn;
 }
 
+int Engine::hexCharToInt(char c){
+    if (c >= '0' && c <= '9')
+        return c - '0';
+    if (c >= 'A' && c <= 'F')
+        return c - 'A' + 10;
+    if (c >= 'a' && c <= 'f')
+        return c - 'a' + 10;
+    return 0;
+}
+
+RGBColor Engine::hexToRGB(const std::string& hexColor){
+    RGBColor color;
+
+    std::string hexValue = hexColor;
+
+    // Remove o caractere '#' se estiver presente
+    if (hexValue[0] == '#') {
+        hexValue.erase(0, 1);
+    }
+
+    // Verifica se a string tem o formato correto
+    if (hexValue.length() == 3 || hexValue.length() == 6) {
+        // Se a string tem 3 caracteres, duplica cada caractere
+        if (hexValue.length() == 3) {
+            hexValue = hexValue.substr(0, 1) + hexValue.substr(0, 1) +
+                       hexValue.substr(1, 1) + hexValue.substr(1, 1) +
+                       hexValue.substr(2, 1) + hexValue.substr(2, 1);
+        }
+
+        // Converte a string hexadecimal para inteiros
+        color.r = hexCharToInt(hexValue[0]) * 16 + hexCharToInt(hexValue[1]);
+        color.g = hexCharToInt(hexValue[2]) * 16 + hexCharToInt(hexValue[3]);
+        color.b = hexCharToInt(hexValue[4]) * 16 + hexCharToInt(hexValue[5]);
+    }
+    else {
+        // Valores padrão se a string não tem o formato correto
+        color.r = 0;
+        color.g = 0;
+        color.b = 0;
+    }
+
+    return color;
+}

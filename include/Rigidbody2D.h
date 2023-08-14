@@ -21,7 +21,6 @@ public:
     SDL_Rect& GetBox();
 
     void SetGravity(float newGravity);
-
     void SetVelocity(Vec2 v);
     void SetRect(SDL_Rect rect);
 

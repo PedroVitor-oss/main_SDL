@@ -75,6 +75,13 @@ Essa função serve para adicionar a imagem carregada pela função CreateTextur
 O primeiro paramtro é a SDL_Texture ( imagem ) que vai ser mostrada.<br>
 O SpriteGame é uma struct da biblioteca Engine.h que possui sua configuração igual a do SDL_Rect. Ele define o espaço da imgem que queremos que preenche.<br>
 O SDL_Rect representa o espaço e posição que a imagem deve preencher na janela criada.
+Alem desse exemplo podemos adicionar um flip na imagem tanto para horizontal tanto para vertical. Veja o codigo abaixo.
+
+    Game.DrawTexture(SDL_Texture*,SpriteGame,SDL_Rect,bool,bool);
+
+O quarto parametro é o um boleano que verifica se ele deve flipar no eixo horizontal e o quito é referente ao vertical.
+
+
 
 ## Update
 Podemos adicionar reatangulos e imagens na lista de renderização mas não mostramos na tela. Para isso temos a função update que atualiza a tela mostrando os item da lista de renderizando, mas no final ele apaga todos itens da lista.<br>

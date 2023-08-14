@@ -42,16 +42,17 @@ bool Rigidbody2D::checkCollision(Rigidbody2D& other) {
 }
 bool Rigidbody2D::checkCollision(Rigidbody2D others[],int length)
 {
-
+	bool collider = false;
 	for(int i =0;i<length;i++){
 		Rigidbody2D other = others[i];
 		bool isColider = SDL_HasIntersection(&m_rect, &other.m_rect);
 		if (isColider){
+				collider = true;
 			collide(other);
 
 		}
 	}
-	return true;
+	return collider;
 }
 SDL_Rect& Rigidbody2D::GetBox(){
 	return m_rect;
@@ -73,12 +74,29 @@ void Rigidbody2D::collide(Rigidbody2D other){
     int intersectY = (abs(deltaY) - (m_rect.h + rectOther.h) / 2) / 2;
 
     if (intersectX > intersectY) {
+			m_vx = 0;
         if (deltaX > 0) {
             m_rect.x = rectOther.x + rectOther.w;
         } else {
             m_rect.x = rectOther.x - m_rect.w;
         }
     } else {
+		m_vy = 0;
+		float dax = m_mass * m_gravity;
+		if(m_vx<-2 || m_vx>2)
+		{
+			if(m_vx>0)
+			{
+				m_vx-= dax;
+				m_vx = m_vx<0? 0:m_vx;
+
+			}else{
+				m_vx+= dax;
+				m_vx = m_vx>0? 0:m_vx;
+			}
+		}else{
+			m_vx = 0;
+		}
         if (deltaY > 0) {
             m_rect.y = rectOther.y + rectOther.h;
         } else {
