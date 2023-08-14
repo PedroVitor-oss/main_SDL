@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1686021429 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\main.cpp
+1692055460 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\main.cpp
 	<Engine.h>
 	<ControleAnimation.h>
 	<Rigidbody2D.h>
@@ -399,7 +399,7 @@
 1683397747 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\animation.h
 	<Engine.h>
 
-1686018445 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\engine.h
+1692055842 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\engine.h
 	<SDL.h>
 	"SDL_Image.h"
 	"SDL_Mixer.h"
@@ -423,9 +423,8 @@
 	"begin_code.h"
 	"close_code.h"
 
-1684007762 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\input.h
+1692055888 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\input.h
 	<SDL.h>
-	<SDL_Image.h>
 	<Vec2.h>
 
 1683999998 c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\include\vec2.h
@@ -438,7 +437,7 @@
 	<Engine.h>
 	<Animation.h>
 
-1686018757 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\engine.cpp
+1692055727 source:c:\users\paulo p. santos\pictures\coisas do pedro\codigos c++\sdl_game\main-sdl\src\engine.cpp
 	"Engine.h"
 	<SDL.h>
 	<SDL_Image.h>

@@ -23,10 +23,10 @@ void Engine::Init(std::string title, int widthWindow, int heightWindow ){
 	}
 
 };
-void Engine::Update(int FPS){
+void Engine::Update(int FPS,InputControle input){
 	SDL_RenderPresent(screen);
-	Input.KeyEvent();
-	if (Input.GetExit()){
+	//input.KeyEvent();
+	if (input.GetExit()){
 		Quit();
 	}
 	Sleep(FPS);

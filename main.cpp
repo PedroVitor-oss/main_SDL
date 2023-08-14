@@ -1,8 +1,10 @@
 #include <Engine.h>
+#include <Input.h>
 #include <ControleAnimation.h>
 #include <Rigidbody2D.h>
 
 Engine Game;
+InputControle Input;
 void DrawInArea(SDL_Rect box, SDL_Texture* texture, SpriteGame sprite, Engine engi);
 int main( int argc, char * argv[] )
 {
@@ -33,22 +35,23 @@ int main( int argc, char * argv[] )
     Rigidbody2D plataform1({400,400,700,64},10);
     Rigidbody2D plataforms[] = {ground,plataform1};
     while(1){
+
         Game.Clean();
         //Entrada do usuario
-        if((Game.Input.KeyUp(SDLK_SPACE) || Game.Input.KeyUp(SDLK_UP)) && isGrounded)
+        if((Input.KeyUp(SDLK_SPACE) || Input.KeyUp(SDLK_UP)) && isGrounded)
         {
             frog.applyForce({0,-forceJump});
             forceJump = 0;
             isGrounded = false;
         }
-        if((Game.Input.KeyIsPressed(SDLK_SPACE) || Game.Input.KeyIsPressed(SDLK_UP)) && isGrounded == true)
+        if((Input.KeyIsPressed(SDLK_SPACE) || Input.KeyIsPressed(SDLK_UP)) && isGrounded == true)
         {
             if(forceJump<150){
                 forceJump+=10;
             }
             //std::cout<<"addicionar";
         }
-        if(Game.Input.KeyDown(SDLK_LEFT))
+        if(Input.KeyDown(SDLK_LEFT))
         {
             if(direction == -1){
                 if(isGrounded){
@@ -59,7 +62,7 @@ int main( int argc, char * argv[] )
             direction = -1;
             }
         }
-        if(Game.Input.KeyDown(SDLK_RIGHT))
+        if(Input.KeyDown(SDLK_RIGHT))
         {
             if(direction == 1){
                 if(isGrounded){
@@ -73,11 +76,11 @@ int main( int argc, char * argv[] )
 
         if(!isGrounded)
         {
-            if(Game.Input.KeyIsPressed(SDLK_LEFT))
+            if(Input.KeyIsPressed(SDLK_LEFT))
             {
                 frog.SetVelocity({-30,frog.GetVelocity().y});
             }
-            if(Game.Input.KeyIsPressed(SDLK_RIGHT))
+            if(Input.KeyIsPressed(SDLK_RIGHT))
             {
                 frog.SetVelocity({30,frog.GetVelocity().y});
             }
@@ -103,7 +106,8 @@ int main( int argc, char * argv[] )
             Game.DrawRect({frog.GetBox().x-15,frog.GetBox().y-50,forceJump,20},Game.hexToRGB("#fa0"));
         }
 
-        Game.Update(41);
+        Input.KeyEvent();
+        Game.Update(41,Input);
     }
     return 0;
 }

@@ -2,7 +2,6 @@
 #define INPUT_H
 
 #include <SDL.h>
-#include <SDL_Image.h>
 #include <Vec2.h>
 
 struct KeyControle {
@@ -114,9 +113,10 @@ class InputControle
 		bool MousePressed(int m);
 		Vec2 GetPositionMouse();
 		bool GetExit();
+		MouseButtonControle MouseButton;
 	protected:
 
-	private:
+	protected:
 	    int keyInPressed[10] = {0};
 	    bool btn_mouse[3] = {false,false,false};
         Vec2 MousePosition = Vec2(0,0);

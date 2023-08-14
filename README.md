@@ -136,39 +136,44 @@ Estrutura de onde o arquivo deve ser salvo:
 |  |-- main.cpp
 ```
 # Input.h
-Essa class esta atribuida na Engine.h com o nome input ele controla a entrada do teclado e mouse.
+Essa class como a engine deve ser declarada e adicionada no cabeçalho  ele controla a entrada do teclado e mouse.
+```
+//declaração
+#include <InputControle.h>
+InputControle Input;
+```
 ## KeyDown
 Essa função retorna verdadeiro quando a tecla é precionada ( apenas uma vez ).
 ```
-  Game.Input.KeyDown(KeyValue);
+  Input.KeyDown(KeyValue);
 ```
 No local de KeyValue temos que colocar um SDLK, voce pode verificar como chamar eles nessa planilha [keycode SDL](https://docs.google.com/spreadsheets/d/1auOFSs5HZ7iZ710WjbPp9iQCZkYOlmUi2TawAkOjYX4/edit?usp=sharing).
 ## KeyUp
 Essa função retorna verdadeiro quando a tecla deeixa de ser precionada ( apenas uma vez ).
 ```
-  Game.Input.KeyUp(keyvalue);
+  Input.KeyUp(keyvalue);
 ```
 ## KeyIsPressed
 Essa função retorna verdadeiro, emquando a tecla esta precionada.
 ```
-  Game.Input.KeyIsPressed(keyvalue);
+  Input.KeyIsPressed(keyvalue);
 ```
 ## MousePressed
 Essa função retorna ( **true** ou **false** ) se  um botão do mouse foi precionada.
 ```
-  Game.Input.MousePressed(controleMouse);
+  Input.MousePressed(controleMouse);
 ```
 No local do controleMouse temos que colocar um Game.MouseButton com as seguintes variaveis:
 - Center
 - Left
 - Right
 ```
-  Game.Input.MousePressed(Game.MouseButton.Left)
+  Input.MousePressed(Game.MouseButton.Left)
 ```
 ## GetPositionMouse
 Essa função retorna em forma  de  vetor a posição do mouse na janela. ( terá uma esplicação melhor da biblioteca Vec2 embreve)<br>
 ```
-  Vec2 positionMouse = Game.Input.GetPositionMouse();
+  Vec2 positionMouse = Input.GetPositionMouse();
   positionMouse.x;//posição x
   positionMouse.y;//posição y
 ```
@@ -179,7 +184,7 @@ Costumo colocar como parametro do loop.
 ```
 int main( int argc, char * argv[] )
 {
-  while(!Game.Input.GetExit())
+  while(!Input.GetExit())
   {
   //code game
   }
