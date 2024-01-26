@@ -85,10 +85,11 @@ O quarto parametro é o um boleano que verifica se ele deve flipar no eixo horiz
 
 ## Update
 Podemos adicionar reatangulos e imagens na lista de renderização mas não mostramos na tela. Para isso temos a função update que atualiza a tela mostrando os item da lista de renderizando, mas no final ele apaga todos itens da lista.<br>
-Essa função deve ser colocada dentro de um loop infinito.Ela precisa de um parametro inteiro, que é a a taxa de atualisação ou fps, eu costumo colocar 41.
+Essa função deve ser colocada dentro de um loop infinito.Ela precisa de dois parametros um inteiro e um InputControler, o numero inteiro que é a a taxa de atualisação ou fps, eu costumo colocar 41, InputControle trabalha com a entrada do usuario que o jogo usa.
 ```
 #include <Engine.h>
 Engine Game;
+InputControle input;
 int main( int argc, char * argv[] )
 {
   Game.Init("my game",1200,700);
@@ -97,7 +98,7 @@ int main( int argc, char * argv[] )
   SDL_Rect playerBox = {100,100,100,100};
   while(1){
      Game.DrawTexture(texturePlayer,{100,100,100,100},playerBox);
-     Game.Update(41);
+     Game.Update(41,input);
   }
   return 0;
 }
@@ -109,7 +110,7 @@ Lembra que para redesenhar temos que cobrir os desenhos anteriores. A função `
   while(1){
      Game.Clean();
      Game.DrawTexture(texturePlayer,{100,100,100,100},playerBox);
-     Game.Update(41);
+     Game.Update(41,input);
   }
 ```
 ## Controle de Save
@@ -192,6 +193,20 @@ int main( int argc, char * argv[] )
   return 0;
 }
 ```
+## KeyEvent
+Essa função faz a leitura do teclado e mouse, caso ele não seja colocada no loop o jogo da problema.
+```
+int main( int argc, char * argv[] )
+{
+  while(!Input.GetExit())
+  {
+  //code game
+  Input.KeyEvent();
+  }
+  //apos fechar a janela
+  return 0;
+}
+```
 # Vec2.h
 Essa biblioteca possui uma class bem simples ela posui apenas doias variaveis float , **x** e **y**.<br>
 Ela futuramente utilizara de opradores como **+**,**-**,***** e **/**.
@@ -220,6 +235,11 @@ Essa função serve como um "empurão", ele adiciona uma aceleração inicial qu
   myBox.applyForce({0,-100});
 ```
 Por nossa gravidade ser positiva para que nosso corpo suba para sima com efeito de pulo temos que colocar gravidade negativa.
+## Transform
+Essa é um função que tambem move o corpo porem agora alterando o box colider, dessa maneira não existe atrito.
+```
+myBox.Transform({10,0});
+```
 ## checkCollision 
 Essa função tem duas possibilidade de usar ela apenas com um outro corpo fisico e com uma lista. Quando é apenas uma corpo fisica ela retorna se ouve uma colisão com o objeto do parametro. Exemplo:
 ```
